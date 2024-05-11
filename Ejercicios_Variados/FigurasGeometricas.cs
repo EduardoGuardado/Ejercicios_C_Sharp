@@ -18,5 +18,9 @@ internal class Program
         Console.WriteLine($"Base: {b}, Altura: {h}");
         a = h * b / 2;
         Console.WriteLine($"Área: {b} x {h} / 2 = {a}\n");
+        Console.WriteLine("** Circulo **");
+        Console.WriteLine($"Radio: {r}");
+        a = PI * (r * r);
+        Console.WriteLine($"Área del circulo: {a}\n");
     }
 }
