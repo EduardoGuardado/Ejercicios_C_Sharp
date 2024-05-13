@@ -14,15 +14,17 @@ internal class Program
             Console.WriteLine("*** 2. Restar      ******");
             Console.WriteLine("*** 3. Multiplicar ******");
             Console.WriteLine("*** 4. Dividir     ******");
-            Console.WriteLine("*** 5. Salir       ******");
+            Console.WriteLine("*** 5. Exponencial ******");
+            Console.WriteLine("*** 6. Salir       ******");
             Console.WriteLine("*************************");
             Console.Write("Escriba el número correspondiente a su opción: ");
 
             // Le pedimos al usuario que añada la opción y la almacenamos en una variable.
-            string opcionStr = Console.ReadLine();
-
             // Convertimos el dato de entrada del usuario a un número entero
-            if (int.TryParse(opcionStr, out int opcion))
+            int opcion = int.Parse(Console.ReadLine());
+
+            // Comprobamos que el usuario introduzca los valores solicitados en el menu
+            if (opcion > 0 || opcion <= 6)
             {
                 // Ahora ejecutamos la opción que el usuario ha seleccionado
                 switch (opcion)
@@ -40,6 +42,18 @@ internal class Program
                         RealizarOperacion("División", (a, b) => b != 0 ? (double)a / b : double.NaN);
                         break;
                     case 5:
+                        Console.WriteLine("Has elegido: Obtener la potencia de un numero");
+
+                        Console.WriteLine("Escribe el valor de la base: ");
+                        int numero1 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Escribe el valor del exponente: ");
+                        int numero2 = int.Parse(Console.ReadLine());
+
+                        int potencia = Exponente(numero1, numero2);
+                        Console.WriteLine($"La potencia es: {potencia}");
+                        break;
+                    case 6:
                         Console.WriteLine("Saliendo...");
                         salir = true;
                         break;
@@ -81,5 +95,14 @@ internal class Program
         {
             Console.WriteLine($"El resultado de la {nombreOperacion.ToLower()} es: {resultado}");
         }
+    }
+    static int Exponente(int n1, int n2)
+    {
+        int aux = n1;
+        for (int i = 1; i < n2; i++)
+        {
+            n1 = n1 * aux;
+        }
+        return n1;
     }
 }
